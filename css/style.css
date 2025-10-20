@@ -15,7 +15,10 @@ body {
   background: radial-gradient(circle at top left, #0f172a 0%, #1e293b 100%);
   color: #f8fafc;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden; /* allow vertical scroll */
+}
+html {
+  scroll-behavior: smooth;
 }
 
 /* Canvas behind everything */
