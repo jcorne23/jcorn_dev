@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Julio Cornejo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Fira Code", monospace;
+      background: radial-gradient(circle at top left, #0f172a 0%, #1e293b 100%);
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      overflow: hidden;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      color: #38bdf8;
+      text-shadow: 0 0 8px rgba(56,189,248,0.5);
+      margin-bottom: 0.3rem;
+    }
+    header p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    /* --- Grid --- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 1rem;
+      width: 100%;
+      max-width: 1100px;
+      height: 65vh; /* fits neatly in one screen */
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(255,255,255,0.05);
+      height: 100%;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+ 
+
+    .project-card:hover .slideshow img.active {
+  transform: scale(1.05);
+  filter: brightness(0.4);
+  transition: transform 0.2s ease-out, filter 0.2s ease-out;
+}
+
+    .project-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15,23,42,0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.15s ease-out; /* much faster */
+  text-align: center;
+  padding: 0.8rem;
+  z-index: 2; /* sits above images */
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1; /* instant-ish overlay appearance */
+}
+
+/* Footer contact bar */
+.contact-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  background: transparent;
+}
+
+.icon-bubble {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #38bdf8;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.icon-bubble:hover {
+  background: #38bdf8;
+  color: #0f172a;
+  box-shadow: 0 0 12px #38bdf8;
+}
+
+.icon-bubble svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+ 
+    .project-overlay h3 {
+      color: #38bdf8;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-overlay p {
+      color: #e2e8f0;
+      font-size: 0.75rem;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.3rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .tech-tag {
+      background: rgba(56,189,248,0.15);
+      border: 1px solid rgba(56,189,248,0.3);
+      color: #38bdf8;
+      padding: 0.2rem 0.5rem;
+      border-radius: 8px;
+      font-size: 0.65rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.3rem 0.7rem;
+      font-size: 0.7rem;
+      border-radius: 6px;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn:hover {
+      background: #38bdf8;
+      color: #0f172a;
+      box-shadow: 0 0 8px #38bdf8;
+    }
+
+    @media (max-width: 900px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        height: auto;
+      }
+      .project-card { height: 200px; }
+    }
+
+    @media (max-width: 600px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+      }
+      .project-card { height: 180px; }
+    }
+    .project-card .slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.project-card .slideshow img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out !important;
+  z-index: 0;
+}
+
+.project-card .slideshow img.active {
+  opacity: 1 !important;
+  z-index: 1;
+}
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>My Projects</h1>
+  </header>
+
+  <section class="projects-grid">
+    <!-- 1 -->
+    <div class="project-card">
+  <div class="slideshow">
+    <img src="assets/fatigue1.png" alt="Driver Fatigue System">
+    <img src="assets/fatigue2.png" alt="Driver Fatigue System">
+    <img src="assets/fatigue3.png" alt="Driver Fatigue System">
+  </div>
+
+  <div class="project-overlay">
+    <h3>Driver Fatigue System</h3>
+    <p>Raspberry Pi + ESP32-CAM + BLE + OLED → Real-time driver alert detection.</p>
+    <div class="tech-tags">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">OpenCV</span>
+      <span class="tech-tag">ESP32</span>
+      <span class="tech-tag">BLE</span>
+    </div>
+    <a href="https://github.com/jcorne23/Driver_Fatigue_System" target="_blank" class="btn">View →</a>
+  </div>
+</div>
+
+    <!-- 2 -->
+<div class="project-card">
+  <div class="slideshow">
+    <img src="assets/abb1.png" alt="Airbnb Data Ingestion Pipeline">
+    <img src="assets/abb2.png" alt="Airbnb Analytics Dashboard">
+  </div>
+
+  <div class="project-overlay">
+    <h3>Airbnb Data Querying & Analysis</h3>
+    <p>Processed over 500 MB of Airbnb listing data using Python and SQL to build scalable ingestion pipelines and analytical queries for insights on pricing, reviews, and occupancy trends.</p>
+    <div class="tech-tags">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">mySQL</span>
+      <span class="tech-tag">Pandas</span>
+      <span class="tech-tag">MongoDB</span>
+
+
+    </div>
+    <a href="https://github.com/jcorne23/AirBnB-Querying" target="_blank" class="btn">View →</a>
+  </div>
+</div>
+
+
+    <!-- 3 -->
+ <div class="project-card">
+  <div class="slideshow">
+    <img src="assets/la1.png" alt="Watchful Eye LA Screenshot 1">
+    <img src="assets/la2.png" alt="Watchful Eye LA Screenshot 2">
+  </div>
+
+  <div class="project-overlay">
+    <h3>Watchful Eye LA</h3>
+    <p>Flask web app visualizing LA crime with Leaflet maps and Chart.js analytics.</p>
+    <div class="tech-tags">
+      <span class="tech-tag">Flask</span>
+      <span class="tech-tag">Leaflet</span>
+      <span class="tech-tag">Chart.js</span>
+        <span class="tech-tag">GCP SQL</span>
+
+    </div>
+    <a href="https://github.com/jcorne23/Watchful_Eye_LA" target="_blank" class="btn">View →</a>
+  </div>
+</div>
+
+
+    <!-- 4 -->
+<div class="project-card">
+  <div class="slideshow">
+    <img src="assets/slc3.png" alt="LC3 Processor Block Diagram">
+    <img src="assets/slc32.png" alt="LC3 Processor Simulation">
+  </div>
+
+  <div class="project-overlay">
+    <h3>LC3 Processor</h3>
+    <p>Custom LC3 CPU built in SystemVerilog, simulated with ModelSim and tested via assembly.</p>
+    <div class="tech-tags">
+      <span class="tech-tag">SystemVerilog</span>
+      <span class="tech-tag">ModelSim</span>
+    </div>
+    <a href="#" class="btn" title="Private repository – access available on request">Private Repo</a>
+  </div>
+</div>
+
+
+    <!-- 5 -->
+ <div class="project-card">
+  <div class="slideshow">
+    <img src="assets/rally1.jpg" alt="Rally X Game FPGA Implementation">
+    <img src="assets/rally2.jpg" alt="Rally X Game Simulation in ModelSim">
+  </div>
+
+  <div class="project-overlay">
+    <h3>Rally-X Game (FPGA)</h3>
+    <p>Classic Rally-X arcade game recreated in VHDL and Verilog, simulated with ModelSim and deployed on FPGA hardware.</p>
+    <div class="tech-tags">
+      <span class="tech-tag">VHDL</span>
+      <span class="tech-tag">Verilog</span>
+      <span class="tech-tag">ModelSim</span>
+    </div>
+    <a href="https://github.com/jcorne23/Rally-X" target="_blank" class="btn">View →</a>
+  </div>
+</div>
+
+
+    <!-- 6 -->
+    <div class="project-card">
+  <div class="slideshow">
+    <img src="assets/virtio1.png" alt="Illinix 391 RISC-V OS Shell">
+    <img src="assets/virtio2.png" alt="Illinix 391 Virtual Memory Demo">
+  </div>
+
+  <div class="project-overlay">
+    <h3>Illinix 391 Operating System</h3>
+    <p>RISC-V operating system built from scratch for UIUC ECE 391, featuring system calls, virtual memory, and multitasking drivers.</p>
+    <div class="tech-tags">
+      <span class="tech-tag">C</span>
+      <span class="tech-tag">RISC-V</span>
+      <span class="tech-tag">Operating Systems</span>
+    </div>
+    <a href="#" class="btn" title="Private repository – access available on request">Private Repo</a>
+
+  </div>
+</div>
+  </section>
+  <script src="js/script.js" defer></script>
+
+</body>
+<footer class="contact-bar">
+<a href="index.html" class="icon-bubble" aria-label="Back to Home" title="Back to Home">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 3l9 8h-3v10h-12v-10h-3l9-8z"/>
+  </svg>
+</a>
+
+
+
+
+   <a href="assets/JulioCornejo_Resume.pdf" target="_blank" class="icon-bubble" aria-label="Resume">
+  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 2a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 11h8v2H8v-2zm0 4h8v2H8v-2z"/>
+  </svg>
+</a>
+
+    
+
+    <!-- LinkedIn -->
+<a href="https://www.linkedin.com/in/julio-cornejo-a2093b1ba/"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="LinkedIn"
+   class="icon-bubble">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="currentColor">
+    <path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95
+     v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719
+     C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517
+     c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533
+     c2.987,0,3.539,1.966,3.539,4.522V22z"/>
+  </svg>
+</a>
+
+<!-- GitHub -->
+<a href="https://github.com/jcorne23" target="_blank" class="icon-bubble" aria-label="GitHub">
+  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.112.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.238 1.84 1.238 1.07 1.834 2.807 1.304 3.492.997.107-.776.418-1.304.76-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.382 1.235-3.22-.125-.303-.54-1.522.115-3.176 0 0 1.005-.322 3.3 1.23a11.52 11.52 0 0 1 3.005-.404c1.02.005 2.045.137 3.005.404 2.28-1.552 3.285-1.23 3.285-1.23.66 1.654.245 2.873.12 3.176.77.838 1.23 1.91 1.23 3.22 0 4.61-2.807 5.625-5.48 5.92.43.37.81 1.096.81 2.21 0 1.595-.015 2.88-.015 3.27 0 .315.21.684.825.567C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
+  </svg>
+</a>
+
+
+
+<a href="mailto:jcorne23@illinois.edu"
+   class="icon-bubble"
+   aria-label="Email Julio Cornejo"
+   title="Email Julio Cornejo">
+  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 5.333-8-5.333V6h16zm0 12H4V8.489l8 5.333 8-5.333V18z"/>
+  </svg>
+</a>
+    
+    
+  </footer>
+</html>
