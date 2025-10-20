@@ -143,6 +143,49 @@ body {
     margin-top: 2rem;
   }
 }
+@media (max-width: 768px) {
+  .project-overlay h3 {
+    font-size: 1rem;
+  }
+  .project-overlay p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+  .tech-tag {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.4rem;
+  }
+  .btn {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: center;
+    padding: 0 1rem;
+  }
+  .left, .right {
+    max-width: 100%;
+    flex: none;
+  }
+  .container {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+  .profile-img {
+    width: 220px;
+    height: 220px;
+    margin-top: 1rem;
+  }
+}
+
 
 /* ------------------------------
    Contact / Social Footer Bar
@@ -156,6 +199,14 @@ body {
   display: flex;
   gap: 1.5rem;
   z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .contact-bar {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
 }
 
 .icon-bubble {
