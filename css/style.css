@@ -35,14 +35,17 @@ html {
    Layout
 ------------------------------ */
 
+
 .container {
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100vh;
-  padding: 0 8%;
+  min-height: 100vh;
+  height: auto;           /* allow scrolling */
+  padding: 5% 8%;
   z-index: 1;
+  flex-wrap: wrap;        /* stack on small screens */
 }
 
 /* Left (text side) */
