@@ -129,7 +129,10 @@ html {
   text-align: center;
 }
 
-
+.quote-highlight {
+  color: #00FF00
+;
+}
 
 /* Right (image side) */
 .right {
