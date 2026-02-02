@@ -173,6 +173,16 @@ html {
   animation: float 4s ease-in-out infinite;
 }
 
+.profile-img1 {
+  width: 80px;
+  height:   80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #38f83e;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+  transform: translateY(0);
+  animation: float 4s ease-in-out infinite;
+}
 
 
 
