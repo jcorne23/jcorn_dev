@@ -214,6 +214,25 @@
     opacity: 1 !important;
     z-index: 1;
   }
+.year-divider {
+  grid-column: 1 / -1;       /* span the full width of the grid */
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #38bdf8;
+  border-bottom: 1px solid rgba(56,189,248,0.35);
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.6rem;
+  text-align: left;          /* attach to the left of the row */
+  align-self: center;        /* vertically centers if needed */
+}
+
+.title-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
+  text-align: center;
+}
 </style>
 
 </head>
@@ -225,6 +244,8 @@
 
   <section class="projects-grid">
     <!-- 1 -->
+  <div class="year-divider">Legacy</div>
+
     <div class="project-card">
   <div class="slideshow">
     <img src="assets/fatigue1.png" alt="Driver Fatigue System">
@@ -234,7 +255,7 @@
 
   <div class="project-overlay">
     <h3>Driver Fatigue System</h3>
-    <p>Raspberry Pi + ESP32-CAM + BLE + OLED → Real-time driver alert detection.</p>
+    <p>Raspberry Pi + ESP32-CAM + BLE + OLED + FLASK → Real-time driver alert detection.</p>
     <div class="tech-tags">
       <span class="tech-tag">Python</span>
       <span class="tech-tag">OpenCV</span>
@@ -272,7 +293,6 @@
   </div>
 </div>
 
-
     <!-- 3 -->
  <div class="project-card">
   <div class="slideshow">
@@ -293,6 +313,7 @@
     <a href="https://github.com/jcorne23/Watchful_Eye_LA" target="_blank" class="btn">View →</a>
   </div>
 </div>
+  <div class="year-divider">2025</div>
 
 
     <!-- 4 -->
@@ -354,10 +375,13 @@
   </div>
 </div>
 <!-- 7 -->
+<div class="year-divider">2026</div>
+
 <div class="project-card">
   <div class="slideshow">
-    <img src="assets/virtio1.png" alt="Illinix 391 RISC-V OS Shell">
-    <img src="assets/virtio2.png" alt="Illinix 391 Virtual Memory Demo">
+    <img src="assets/quote1.png" alt="Illinix 391 RISC-V OS Shell">
+    <img src="assets/quote2.png" alt="Illinix 391 Virtual Memory Demo">
+    <img src="assets/quote3.png" alt="Illinix 391 Virtual Memory Demo">
   </div>
 
   <div class="project-overlay">
@@ -373,9 +397,40 @@
     <a href="#" class="btn" title="Private repository – access available on request">Private Repo</a>
 
   </div>
+  </div>
+
+  <div class="project-card">
+  <div class="slideshow">
+    <img src="assets/lovebox1.png" alt="Illinix 391 RISC-V OS Shell">
+    <img src="assets/lovebox2.png" alt="Illinix 391 Virtual Memory Demo">
+    <img src="assets/lovebox3.png" alt="Illinix 391 Virtual Memory Demo">
+    <img src="assets/lovebox last.png" alt="Illinix 391 Virtual Memory Demo">
+
+  </div>
+
+  <div class="project-overlay">
+    <h3>ESP32 Love Box</h3>
+    <p>Finite State Machine Valentine's Circuit</p>
+    <div class="tech-tags">
+      <span class="tech-tag">Hand Solder</span>
+      <span class="tech-tag">Sprite/ROM Translation</span>
+      <span class="tech-tag">OLED</span>
+      <span class="tech-tag">FSM Design</span>
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">MCU</span>
+      <span class="tech-tag">C++</span>
+    </div>
+    <a href="#" class="btn" title="Private repository – access available on request">Private Repo</a>
+
+  </div>
 </div>
 
   </section>
+
+
+
+
+
   <script src="js/script.js" defer></script>
 
 </body>
