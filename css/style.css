@@ -188,6 +188,16 @@ html {
   transform: translateY(0);
   animation: float 4s ease-in-out infinite;
 }
+.dia-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #38bdf8;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+  transform: translateY(0);
+  animation: float 4s ease-in-out infinite;
+}
 
 .profile-img1 {
   width: 80px;
@@ -201,7 +211,18 @@ html {
 }
 
 
+.container23 {
+    display: flex;
+    gap: 20px;
+}
 
+iframe {
+    width: 65%;
+}
+
+.right23 {
+    width: 35%;
+}
 
 
 
